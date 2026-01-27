@@ -5,13 +5,13 @@ namespace Signet.Api.Features.Schemas.Domain
     public sealed class Schema
     {
         public string Name { get; private set; }
-        public string Description { get; private set; }
-        public string Id { get; private set; }
+        public string? Description { get; private set; }
+        public string? Id { get; private set; }
         public SchemaVersion Version { get; private set; }
         public SchemaDefinition Definition { get; private set; }
 
         
-        public static async Task<Schema> CreateSchemaAsync(string name, string description, string? id, string version, string schemaContent)
+        public static async Task<Schema> CreateSchemaAsync(string name, string? description, string? id, string version, string schemaContent)
         {
             var schema = new Schema
             {
@@ -32,16 +32,6 @@ namespace Signet.Api.Features.Schemas.Domain
             if (string.IsNullOrWhiteSpace(Name))
             {
                 throw new ArgumentException("Schema name must be provided and cannot be empty.", nameof(Name));
-            }
-
-            if (string.IsNullOrWhiteSpace(Description))
-            {
-                throw new ArgumentException("Schema description must be provided and cannot be empty.", nameof(Description));
-            }
-
-            if (string.IsNullOrWhiteSpace(Id))
-            {
-                throw new ArgumentException("Schema id must be provided and cannot be empty.", nameof(Id));
             }
         }
     }

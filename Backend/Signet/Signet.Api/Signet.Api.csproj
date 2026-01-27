@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <Folder Include="Features\Schemas\Domain\Entities\" />
-    <Folder Include="Features\Schemas\Endpoints\" />
+    <Folder Include="Features\Schemas\Endpoints\AddSchema\" />
     <Folder Include="Features\Schemas\UseCases\AddSchema\" />
     <Folder Include="Features\Schemas\UseCases\" />
     <Folder Include="Infrastructure\" />
