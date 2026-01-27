@@ -1,4 +1,5 @@
 ﻿using NJsonSchema;
+using Signet.Api.Features.Common.Entities;
 using Signet.Api.Features.Schemas.Domain.Exceptions;
 using System.ComponentModel;
 
@@ -8,6 +9,8 @@ namespace Signet.Api.Features.Schemas.Domain.ValueObjects
     {
         public SchemaDefinitionType DefinitionType { get; private set; }
         public string Content { get; private set; }
+
+        private SchemaDefinition() { }
 
         public static async Task<SchemaDefinition> CreateDefinitionAsync(SchemaDefinitionType definitionType, string content)
         {

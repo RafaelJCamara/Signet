@@ -1,8 +1,9 @@
-﻿using Signet.Api.Features.Schemas.Domain.Exceptions;
+﻿using Signet.Api.Features.Common.Entities;
+using Signet.Api.Features.Schemas.Domain.Exceptions;
 
 namespace Signet.Api.Features.Schemas.Domain.ValueObjects
 {
-    public sealed class SchemaVersion
+    public sealed class SchemaVersion : ValueObject
     {
         public int Major { get; private set; }
         public int Minor { get; private set; }
@@ -64,7 +65,12 @@ namespace Signet.Api.Features.Schemas.Domain.ValueObjects
             return newVersion;
         }
 
-        private void CheckInvariants()
+        public override string ToString()
+        {
+            return $"{Major}.{Minor}.{Patch}";
+        }
+
+        protected override void CheckInvariants()
         {
             // Reject negative components
             if (Major < 0 || Minor < 0 || Patch < 0)

@@ -1,23 +1,26 @@
-﻿using Signet.Api.Features.Schemas.Domain.ValueObjects;
+﻿using Signet.Api.Features.Common.Entities;
+using Signet.Api.Features.Schemas.Domain.ValueObjects;
 
-namespace Signet.Api.Features.Schemas.Domain
+namespace Signet.Api.Features.Schemas.Domain.Entities
 {
-    public sealed class Schema
+    public sealed class Schema : AggregateRoot
     {
         public string Name { get; private set; }
         public string? Description { get; private set; }
-        public string? Id { get; private set; }
+        public string? SchemaId { get; private set; }
+        public string? ChangeLog { get; set; }
         public SchemaVersion Version { get; private set; }
         public SchemaDefinition Definition { get; private set; }
 
         
-        public static async Task<Schema> CreateSchemaAsync(string name, string? description, string? id, string version, string schemaContent)
+        public static async Task<Schema> CreateSchemaAsync(string name, string? description, string? id, string version, string? changeLog, string schemaContent)
         {
             var schema = new Schema
             {
                 Name = name,
                 Description = description,
-                Id = id ?? name,
+                SchemaId = id ?? name,
+                ChangeLog = changeLog,
                 Version = SchemaVersion.CreateVersion(version),
                 Definition = await SchemaDefinition.CreateDefinitionAsync(SchemaDefinitionType.JsonSchema, schemaContent).ConfigureAwait(false)
             };
@@ -27,7 +30,7 @@ namespace Signet.Api.Features.Schemas.Domain
             return schema;
         }
 
-        private void CheckInvariants()
+        protected override void CheckInvariants()
         {
             if (string.IsNullOrWhiteSpace(Name))
             {
