@@ -9,7 +9,9 @@ builder.Services.AddControllers();
 
 builder.Services.AddOpenApi();
 
-builder.AddSchemaUseCases();
+builder
+    .AddSchemaUseCases()
+    .AddSchemaInfrastructureExtensions();
 
 builder.Services.AddFastEndpoints();
 

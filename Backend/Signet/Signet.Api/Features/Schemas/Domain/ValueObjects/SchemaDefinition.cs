@@ -40,6 +40,8 @@ namespace Signet.Api.Features.Schemas.Domain.ValueObjects
                 {
                     throw new JsonSchemaNotValidException();
                 }
+
+                return;
             }
 
             throw new InvalidEnumArgumentException($"Schema definition type {DefinitionType} not supported.");

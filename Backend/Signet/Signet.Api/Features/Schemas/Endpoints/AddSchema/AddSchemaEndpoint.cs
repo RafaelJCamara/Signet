@@ -8,6 +8,7 @@ namespace Signet.Api.Features.Schemas.Endpoints.AddSchema
         public override void Configure()
         {
             Post("/api/schema");
+            AllowAnonymous();
         }
 
         public override async Task HandleAsync(AddSchemaInputDto request, CancellationToken cancellationToken)

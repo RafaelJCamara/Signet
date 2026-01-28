@@ -1,7 +1,7 @@
 ﻿using Signet.Api.Features.Schemas.Domain.Entities;
-using Signet.Api.Infrastructure.Persistence.Models;
+using Signet.Api.Features.Schemas.Infrastructure.Persistence.Models;
 
-namespace Signet.Api.Infrastructure.Persistence.Mappers
+namespace Signet.Api.Features.Schemas.Infrastructure.Persistence.Mappers
 {
     public static class SchemaToMongoSchemaMapper
     {
