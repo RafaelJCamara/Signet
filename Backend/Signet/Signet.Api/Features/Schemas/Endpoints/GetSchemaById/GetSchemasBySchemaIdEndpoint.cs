@@ -3,7 +3,7 @@ using Signet.Api.Features.Common.UseCases;
 
 namespace Signet.Api.Features.Schemas.Endpoints.GetSchemaById
 {
-    public class GetSchemasBySchemaIdEndpoint(IUseCase<string, IEnumerable<GetSchemasByIdEndpointResponseDto>> useCase) : Endpoint<GetSchemasByIdEndpointRequestDto, IEnumerable<GetSchemasByIdEndpointResponseDto>>
+    public sealed class GetSchemasBySchemaIdEndpoint(IUseCase<string, IEnumerable<GetSchemasByIdEndpointResponseDto>> useCase) : Endpoint<GetSchemasByIdEndpointRequestDto, IEnumerable<GetSchemasByIdEndpointResponseDto>>
     {
         public override void Configure()
         {

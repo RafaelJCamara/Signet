@@ -8,5 +8,7 @@ namespace Signet.Api.Features.Common.Domain.Repositories
         Task CreateAsync(T aggregateRoot, CancellationToken cancellationToken = default);
 
         Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+
+        Task<IReadOnlyCollection<T>> GetAllAsync(CancellationToken cancellationToken = default);
     }
 }
