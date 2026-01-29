@@ -18,6 +18,8 @@ namespace Signet.Api.Features.Schemas.UseCases.AddSchema
                 input.SchemaDefinition
             );
 
+            //TODO: check if schema with manual id exists, and only create if it doesn't
+
             await schemaRepository.CreateAsync(newSchema);
         }
     }

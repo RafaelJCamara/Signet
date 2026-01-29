@@ -12,6 +12,6 @@
 
     public interface IUseCase<TInput, TOutput>
     {
-        ValueTask<TOutput> ExecuteAsync(Task input, CancellationToken cancellationToken = default);
+        ValueTask<TOutput> ExecuteAsync(TInput input, CancellationToken cancellationToken = default);
     }
 }

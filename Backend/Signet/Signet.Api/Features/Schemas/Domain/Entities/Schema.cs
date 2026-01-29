@@ -19,7 +19,7 @@ namespace Signet.Api.Features.Schemas.Domain.Entities
             {
                 Name = name,
                 Description = description,
-                SchemaId = id ?? name,
+                SchemaId = id ?? name.ToLowerInvariant(),
                 ChangeLog = changeLog,
                 Version = SchemaVersion.CreateVersion(version),
                 Definition = await SchemaDefinition.CreateDefinitionAsync(SchemaDefinitionType.JsonSchema, schemaContent).ConfigureAwait(false)
