@@ -16,7 +16,7 @@ namespace Signet.Api.Features.Schemas.Extensions
         {
             builder.Services.AddScoped<IUseCaseVoid<AddSchemaInputDto>, AddSchemaUseCase>();
 
-            builder.Services.AddScoped<IUseCase<string, IEnumerable<GetSchemasByIdEndpointResponseDto>>, GetSchemasByIdUseCase>();
+            builder.Services.AddScoped<IUseCase<GetSchemasByIdEndpointRequestDto, IEnumerable<GetSchemasByIdEndpointResponseDto>>, GetSchemasByIdUseCase>();
 
             builder.Services.AddScoped<IUseCaseOutputOnly<IEnumerable<GetAllSchemasEndpointResponseDto>>, GetAllSchemasUseCase>();
 

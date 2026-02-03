@@ -3,12 +3,6 @@ using Signet.Api.Features.Schemas.Domain.Entities;
 using Signet.Api.Features.Schemas.Domain.Repositories;
 using Signet.Api.Features.Schemas.Infrastructure.Persistence.Mappers;
 using Signet.Api.Features.Schemas.Infrastructure.Persistence.Models;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 
 namespace Signet.Api.Features.Schemas.Infrastructure.Persistence.Repositories
 {
@@ -45,9 +39,14 @@ namespace Signet.Api.Features.Schemas.Infrastructure.Persistence.Repositories
             return await MongoSchemaToSchemaMapper.MapToDomainAsync(schema.FirstOrDefault());
         }
 
-        public async Task<IEnumerable<Schema>> GetBySchemaIdAsync(string schemaId, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Schema>> GetBySchemasIdAsync(string schemaId, string? version, CancellationToken cancellationToken = default)
         {
-            var filter = Builders<MongoSchema>.Filter.Eq(ms => ms.SchemaId, schemaId);
+            var filter = Builders<MongoSchema>.Filter
+                .Where(ms => ms.SchemaId == schemaId && 
+                    (
+                        version == null || version.Equals(ms.Version)
+                    )
+                );
 
             using var cursor = await _collection.FindAsync(filter, cancellationToken: cancellationToken).ConfigureAwait(false);
             var mongoSchemas = await cursor.ToListAsync(cancellationToken).ConfigureAwait(false);

@@ -5,6 +5,6 @@ namespace Signet.Api.Features.Schemas.Domain.Repositories
 {
     public interface ISchemaRepository : IRepository<Schema>
     {
-        Task<IEnumerable<Schema>> GetBySchemaIdAsync(string schemaId, CancellationToken cancellationToken = default);
+        Task<IEnumerable<Schema>> GetBySchemasIdAsync(string schemaId, string? version, CancellationToken cancellationToken = default);
     }
 }

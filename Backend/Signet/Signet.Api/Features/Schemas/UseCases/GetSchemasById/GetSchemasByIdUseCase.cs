@@ -4,11 +4,11 @@ using Signet.Api.Features.Schemas.Endpoints.GetSchemaById;
 
 namespace Signet.Api.Features.Schemas.UseCases.GetSchemaById
 {
-    public class GetSchemasByIdUseCase(ISchemaRepository schemaRepository) : IUseCase<string, IEnumerable<GetSchemasByIdEndpointResponseDto>>
+    public class GetSchemasByIdUseCase(ISchemaRepository schemaRepository) : IUseCase<GetSchemasByIdEndpointRequestDto, IEnumerable<GetSchemasByIdEndpointResponseDto>>
     {
-        public async ValueTask<IEnumerable<GetSchemasByIdEndpointResponseDto>> ExecuteAsync(string input, CancellationToken cancellationToken = default)
+        public async ValueTask<IEnumerable<GetSchemasByIdEndpointResponseDto>> ExecuteAsync(GetSchemasByIdEndpointRequestDto input, CancellationToken cancellationToken = default)
         {
-            var schemas = await schemaRepository.GetBySchemaIdAsync(input, cancellationToken);
+            var schemas = await schemaRepository.GetBySchemasIdAsync(input.SchemaId, input.Version, cancellationToken);
 
             return schemas.Select(s => new GetSchemasByIdEndpointResponseDto
             {
