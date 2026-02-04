@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Api/" />
+  <Folder Name="/Api/src/">
+    <Project Path="Signet.Api/Signet.Api.csproj" />
+  </Folder>
+  <Folder Name="/Nuget/" />
+  <Folder Name="/Nuget/src/">
+    <Project Path="Signet.SchemaRegistry/Signet.SchemaRegistry.csproj" Id="97e86560-71d9-46a9-ac90-6d0566869d71" />
+  </Folder>
+</Solution>
