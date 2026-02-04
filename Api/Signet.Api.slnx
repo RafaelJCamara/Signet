@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Signet.Api/Signet.Api.csproj" />
+  </Folder>
+</Solution>
