@@ -2,6 +2,7 @@ using FastEndpoints;
 using MongoDB.Driver;
 using Scalar.AspNetCore;
 using Signet.Api.Features.Schemas.Extensions;
+using Signet.Api.Features.Validation.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,10 +24,12 @@ builder.Services.AddCors(options =>
 
 builder
     .AddSchemaUseCases()
+    .AddValidationUseCases()
     .AddSchemaInfrastructureExtensions();
 
 builder.Services.AddFastEndpoints();
 
+//TODO: make this come from config
 builder.Services.AddSingleton<IMongoClient>(sp => new MongoClient("mongodb://localhost:27017"));
 
 builder.Services.AddScoped(sp =>

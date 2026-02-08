@@ -1,7 +1,7 @@
 ﻿using Signet.Api.Features.Common.Entities;
 using Signet.Api.Features.Schemas.Domain.Exceptions;
 
-namespace Signet.Api.Features.Schemas.Domain.ValueObjects
+namespace Signet.Api.Features.Common.Domain.ValueObjects
 {
     public sealed class SchemaVersion : ValueObject
     {

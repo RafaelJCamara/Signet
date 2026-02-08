@@ -1,7 +1,7 @@
-﻿using Signet.Api.Features.Common.Entities;
-using Signet.Api.Features.Schemas.Domain.ValueObjects;
+﻿using Signet.Api.Features.Common.Domain.ValueObjects;
+using Signet.Api.Features.Common.Entities;
 
-namespace Signet.Api.Features.Schemas.Domain.Entities
+namespace Signet.Api.Features.Common.Domain.Entities
 {
     public sealed class Schema : AggregateRoot
     {

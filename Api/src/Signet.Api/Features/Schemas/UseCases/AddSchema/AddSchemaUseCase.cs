@@ -1,5 +1,5 @@
-﻿using Signet.Api.Features.Common.UseCases;
-using Signet.Api.Features.Schemas.Domain.Entities;
+﻿using Signet.Api.Features.Common.Domain.Entities;
+using Signet.Api.Features.Common.UseCases;
 using Signet.Api.Features.Schemas.Domain.Repositories;
 using Signet.Api.Features.Schemas.Endpoints.AddSchema;
 

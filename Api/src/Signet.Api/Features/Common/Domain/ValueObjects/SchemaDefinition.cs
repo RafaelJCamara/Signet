@@ -1,9 +1,8 @@
 ﻿using NJsonSchema;
-using Signet.Api.Features.Common.Entities;
 using Signet.Api.Features.Schemas.Domain.Exceptions;
 using System.ComponentModel;
 
-namespace Signet.Api.Features.Schemas.Domain.ValueObjects
+namespace Signet.Api.Features.Common.Domain.ValueObjects
 {
     public sealed class SchemaDefinition
     {

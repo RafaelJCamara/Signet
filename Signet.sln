@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11429.125 d18.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{D82C56D6-B2CD-F611-9E31-04638F7EC30E}"
 EndProject
@@ -58,5 +58,8 @@ Global
 		{33EF6935-7BA1-42C4-9F2F-086966FFB539} = {7218997D-3624-D017-E052-9D306D24EF0B}
 		{1A9B4DC9-3B78-5C84-BF34-36145D960003} = {2A18E756-48A1-E247-9A68-57B5E8CBE245}
 		{53934035-5569-483F-A26F-12F314899EE6} = {1A9B4DC9-3B78-5C84-BF34-36145D960003}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE749880-D773-4B5F-999C-03832555A105}
 	EndGlobalSection
 EndGlobal
