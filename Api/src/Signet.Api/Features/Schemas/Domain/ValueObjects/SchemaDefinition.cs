@@ -1,5 +1,4 @@
 ﻿using NJsonSchema;
-using Signet.Api.Features.Common.Entities;
 using Signet.Api.Features.Schemas.Domain.Exceptions;
 using System.ComponentModel;
 
@@ -30,9 +29,25 @@ namespace Signet.Api.Features.Schemas.Domain.ValueObjects
             return newDefinition;
         }
 
-        private async Task CheckInvariantsAsync()
+
+        public async Task<bool> IsContentValidAgainstSchemaAsync(string content, CancellationToken cancellationToken = default)
         {
             if(DefinitionType == SchemaDefinitionType.JsonSchema)
+            {
+                var schema = await JsonSchema.FromJsonAsync(Content, cancellationToken).ConfigureAwait(false);
+
+                var errors = schema.Validate(content);
+
+                return errors.Count == 0;
+            }
+
+            return false;
+        }
+
+        private async Task CheckInvariantsAsync()
+        {
+            //TODO: move this logic to a strategy pattern
+            if (DefinitionType == SchemaDefinitionType.JsonSchema)
             {
                 var schema = await JsonSchema.FromJsonAsync(Content).ConfigureAwait(false);
 

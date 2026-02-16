@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using Signet.Api.Features.Schemas.Domain.Entities;
 using Signet.Api.Features.Schemas.Infrastructure.Persistence.Models;
 

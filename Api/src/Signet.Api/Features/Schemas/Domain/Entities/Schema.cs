@@ -1,4 +1,5 @@
-﻿using Signet.Api.Features.Common.Entities;
+﻿using NJsonSchema;
+using Signet.Api.Features.Common.Entities;
 using Signet.Api.Features.Schemas.Domain.ValueObjects;
 
 namespace Signet.Api.Features.Schemas.Domain.Entities
@@ -28,6 +29,11 @@ namespace Signet.Api.Features.Schemas.Domain.Entities
             schema.CheckInvariants();
 
             return schema;
+        }
+
+        public async Task<bool> IsContentValidAgainstSchemaAsync(string content, CancellationToken cancellationToken = default)
+        {
+            return await Definition.IsContentValidAgainstSchemaAsync(content, cancellationToken).ConfigureAwait(false);
         }
 
         protected override void CheckInvariants()
