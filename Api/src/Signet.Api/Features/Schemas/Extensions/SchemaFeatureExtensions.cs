@@ -13,10 +13,6 @@ public static class SchemaFeatureExtensions
     {
         builder.Services.AddScoped<IUseCaseVoid<AddSchemaInputDto>, AddSchemaUseCase>();
 
-        //builder.Services.AddScoped<IUseCase<GetSchemasByIdEndpointRequestDto, IEnumerable<GetSchemasByIdEndpointResponseDto>>, GetSchemasByIdUseCase>();
-
-        //builder.Services.AddScoped<IUseCaseOutputOnly<IEnumerable<GetAllSchemasEndpointResponseDto>>, GetAllSchemasUseCase>();
-
         return builder;
     }
 
