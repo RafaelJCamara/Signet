@@ -10,7 +10,7 @@ public sealed class Schema : Entity
     public SchemaDefinition Definition { get; private set; }
 
     
-    public static async Task<Schema> CreateSchemaAsync( string version, string? changeLog, string schemaDefinition)
+    public static async Task<Schema> CreateSchemaAsync(Guid? id, string version, string? changeLog, string schemaDefinition)
     {
         var schema = new Schema
         {
@@ -18,6 +18,8 @@ public sealed class Schema : Entity
             Version = await SchemaVersion.CreateVersionAsync(version),
             Definition = await SchemaDefinition.CreateDefinitionAsync(SchemaDefinitionType.JsonSchema, schemaDefinition).ConfigureAwait(false)
         };
+
+        schema.SetId(id);
 
         schema.CheckInvariants();
 

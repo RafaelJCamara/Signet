@@ -76,3 +76,4 @@ app.Run();
 //TODO: organize program.cs
 //TODO: add use case extension to auto register use cases
 //TODO: improve read paths, as they don't need all of the overhead of using repositories (do not use repositories in read-only paths)
+//TODO: find a better alternative for passing IDs into the create domain objects

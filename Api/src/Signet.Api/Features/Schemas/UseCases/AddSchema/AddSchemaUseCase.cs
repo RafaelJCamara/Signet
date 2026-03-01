@@ -11,7 +11,7 @@ public sealed class AddSchemaUseCase(IRepository<SchemaContainer> schemaReposito
     {
         var schemaContainer = await schemaRepository.GetByIdAsync(input.ContainerId);
 
-        await schemaContainer.AddSchemaToContainerAsync(input.Version, input.ChangeLog, input.SchemaDefinition);
+        await schemaContainer.AddSchemaToContainerAsync(Guid.NewGuid(), input.Version, input.ChangeLog, input.SchemaDefinition);
 
         await schemaRepository.UpdateAsync(schemaContainer);
     }

@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using FastEndpoints;
 using Signet.Api.Common.Entities;
 using Signet.Api.Domain.ValueObjects;
 
@@ -33,9 +34,9 @@ public sealed class SchemaContainer : AggregateRoot
         return container;
     }   
 
-    public async Task AddSchemaToContainerAsync(string version, string? changeLog, string schemaDefinition)
+    public async Task AddSchemaToContainerAsync(Guid? id, string version, string? changeLog, string schemaDefinition)
     {
-        var newSchema = await Schema.CreateSchemaAsync(version, changeLog, schemaDefinition);
+        var newSchema = await Schema.CreateSchemaAsync(id, version, changeLog, schemaDefinition);
 
         if (Schemas.Any(schema => schema.Version == newSchema.Version)) {
             //TODO: add business exception
@@ -44,6 +45,12 @@ public sealed class SchemaContainer : AggregateRoot
 
         //TODO: perform check based on schema compatibility level
         _schemas.Add(newSchema);
+    }
+
+    public async Task AddSchemaToContainerAsync(Schema schema)
+    {
+        //TODO: perform check based on schema compatibility level
+        _schemas.Add(schema);
     }
 
     protected override void CheckInvariants()
