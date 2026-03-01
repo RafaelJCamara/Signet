@@ -4,7 +4,9 @@ using Scalar.AspNetCore;
 using Signet.Api.Common.UseCases;
 using Signet.Api.Features.Containers.CreateContainer.Endpoint;
 using Signet.Api.Features.Containers.CreateContainer.UseCase;
+using Signet.Api.Features.Schemas.Endpoints.GetAllSchemas;
 using Signet.Api.Features.Schemas.Extensions;
+using Signet.Api.Features.Schemas.UseCases.GetAllSchemas;
 using Signet.Api.Features.Validation.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<IUseCaseVoid<CreateContainerDto>, CreateContainerUseCase>();
+
+builder.Services.AddScoped<IUseCase<GetAllSchemasEndpointRequestDto, IEnumerable<GetAllSchemasEndpointResponseDto>>, GetAllSchemasUseCase>();
 
 builder.Services.AddOpenApi();
 
@@ -70,3 +74,5 @@ app.Run();
 //TODO: have base route for containers so schemas can derive from
 //TODO: add static code analysis and build error enforcing
 //TODO: organize program.cs
+//TODO: add use case extension to auto register use cases
+//TODO: improve read paths, as they don't need all of the overhead of using repositories (do not use repositories in read-only paths)

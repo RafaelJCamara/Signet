@@ -41,6 +41,7 @@ public static class MongoMappers
         foreach(MongoSchema schema in mongoSchemaContainer.Schemas)
         {
             var newSchema = await Schema.CreateSchemaAsync(schema.Version, schema.ChangeLog, schema.SchemaDetails.SchemaDefinition);
+            await schemaContainer.AddSchemaToContainerAsync(newSchema.Version.ToString(), newSchema.ChangeLog, newSchema.Definition.Content);
         }
 
         return schemaContainer;

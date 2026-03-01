@@ -37,9 +37,9 @@ public class SchemaContainerRepository(IMongoDatabase schemaRegistryDatabase) : 
 
     public async Task<SchemaContainer> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        var schema = await _collection.FindAsync(schema => schema.Id == id.ToString());
+        var schemaContainer = await _collection.FindAsync(schema => schema.Id == id.ToString());
 
-        return await MongoMappers.MapToDomainAsync(schema.FirstOrDefault());
+        return await MongoMappers.MapToDomainAsync(schemaContainer.FirstOrDefault());
     }
 
     public async Task UpdateAsync(SchemaContainer aggregateRoot, CancellationToken cancellationToken = default)

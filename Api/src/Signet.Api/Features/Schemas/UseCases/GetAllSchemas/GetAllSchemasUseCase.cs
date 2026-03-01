@@ -1,22 +1,24 @@
-﻿//using Signet.Api.Common.UseCases;
-//using Signet.Api.Features.Schemas.Endpoints.GetAllSchemas;
+﻿using Signet.Api.Common.UseCases;
+using Signet.Api.Domain.Entities;
+using Signet.Api.Domain.Repositories;
+using Signet.Api.Features.Schemas.Endpoints.GetAllSchemas;
 
-//namespace Signet.Api.Features.Schemas.UseCases.GetAllSchemas;
+namespace Signet.Api.Features.Schemas.UseCases.GetAllSchemas;
 
-//public sealed class GetAllSchemasUseCase(ISchemaRepository schemaRepository) : IUseCaseOutputOnly<IEnumerable<GetAllSchemasEndpointResponseDto>>
-//{
-//    public async ValueTask<IEnumerable<GetAllSchemasEndpointResponseDto>> ExecuteAsync(CancellationToken cancellationToken = default)
-//    {
-//        var allSchemas = await schemaRepository.GetAllAsync(cancellationToken);
+public sealed class GetAllSchemasUseCase(IRepository<SchemaContainer> schemaContainerRepository) : IUseCase<GetAllSchemasEndpointRequestDto, IEnumerable<GetAllSchemasEndpointResponseDto>>
+{
+    public async ValueTask<IEnumerable<GetAllSchemasEndpointResponseDto>> ExecuteAsync(GetAllSchemasEndpointRequestDto input, CancellationToken cancellationToken = default)
+    {
+        var schemaContainer = await schemaContainerRepository.GetByIdAsync(input.ContainerId);
 
-//        return allSchemas.Select(s => new GetAllSchemasEndpointResponseDto
-//        {
-//            Name = s.Name,
-//            Version = s.Version.ToString(),
-//            Description = s.Description,
-//            ChangeLog = s.ChangeLog,
-//            JsonSchema = s.Definition.Content,
-//            SchemaId = s.SchemaId
-//        });
-//    }
-//}
+        return schemaContainer.Schemas.Select(
+            schema => new GetAllSchemasEndpointResponseDto
+            {
+                SchemaId = schema.Id.ToString(),
+                ChangeLog = schema.ChangeLog,
+                Version = schema.Version.ToString(),
+                JsonSchema = schema.Definition.Content
+            }
+        );
+    }
+}
