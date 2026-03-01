@@ -1,12 +1,17 @@
 using FastEndpoints;
 using MongoDB.Driver;
 using Scalar.AspNetCore;
+using Signet.Api.Common.UseCases;
+using Signet.Api.Features.Containers.CreateContainer.Endpoint;
+using Signet.Api.Features.Containers.CreateContainer.UseCase;
 using Signet.Api.Features.Schemas.Extensions;
 using Signet.Api.Features.Validation.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<IUseCaseVoid<CreateContainerDto>, CreateContainerUseCase>();
 
 builder.Services.AddOpenApi();
 
@@ -58,3 +63,10 @@ app.Run();
 
 //TODO: Add backward/forward/full compatibility
 //TODO: change REST resources to plural
+//TODO: add fluent validations
+//TODO: make connection strings and so on come from config
+//TODO: add code documentation
+//TODO: add authentication
+//TODO: have base route for containers so schemas can derive from
+//TODO: add static code analysis and build error enforcing
+//TODO: organize program.cs

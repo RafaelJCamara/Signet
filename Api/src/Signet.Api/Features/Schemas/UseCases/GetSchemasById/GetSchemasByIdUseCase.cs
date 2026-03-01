@@ -1,23 +1,21 @@
-﻿using Signet.Api.Features.Common.UseCases;
-using Signet.Api.Features.Schemas.Domain.Repositories;
-using Signet.Api.Features.Schemas.Endpoints.GetSchemaById;
+﻿//using Signet.Api.Common.UseCases;
+//using Signet.Api.Features.Schemas.Endpoints.GetSchemaById;
 
-namespace Signet.Api.Features.Schemas.UseCases.GetSchemaById
-{
-    public class GetSchemasByIdUseCase(ISchemaRepository schemaRepository) : IUseCase<GetSchemasByIdEndpointRequestDto, IEnumerable<GetSchemasByIdEndpointResponseDto>>
-    {
-        public async ValueTask<IEnumerable<GetSchemasByIdEndpointResponseDto>> ExecuteAsync(GetSchemasByIdEndpointRequestDto input, CancellationToken cancellationToken = default)
-        {
-            var schemas = await schemaRepository.GetBySchemasIdAsync(input.SchemaId, input.Version, cancellationToken);
+//namespace Signet.Api.Features.Schemas.UseCases.GetSchemaById;
 
-            return schemas.Select(s => new GetSchemasByIdEndpointResponseDto
-            {
-                Name = s.Name,
-                Version = s.Version.ToString(),
-                Description = s.Description,
-                ChangeLog = s.ChangeLog,
-                JsonSchema = s.Definition.Content
-            });
-        }
-    }
-}
+//public class GetSchemasByIdUseCase(ISchemaRepository schemaRepository) : IUseCase<GetSchemasByIdEndpointRequestDto, IEnumerable<GetSchemasByIdEndpointResponseDto>>
+//{
+//    public async ValueTask<IEnumerable<GetSchemasByIdEndpointResponseDto>> ExecuteAsync(GetSchemasByIdEndpointRequestDto input, CancellationToken cancellationToken = default)
+//    {
+//        var schemas = await schemaRepository.GetBySchemasIdAsync(input.SchemaId, input.Version, cancellationToken);
+
+//        return schemas.Select(s => new GetSchemasByIdEndpointResponseDto
+//        {
+//            Name = s.Name,
+//            Version = s.Version.ToString(),
+//            Description = s.Description,
+//            ChangeLog = s.ChangeLog,
+//            JsonSchema = s.Definition.Content
+//        });
+//    }
+//}

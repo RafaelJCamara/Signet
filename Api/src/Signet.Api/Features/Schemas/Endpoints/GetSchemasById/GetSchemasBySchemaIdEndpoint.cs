@@ -1,19 +1,18 @@
-﻿using FastEndpoints;
-using Signet.Api.Features.Common.UseCases;
+﻿//using FastEndpoints;
+//using Signet.Api.Common.UseCases;
 
-namespace Signet.Api.Features.Schemas.Endpoints.GetSchemaById
-{
-    public sealed class GetSchemasBySchemaIdEndpoint(IUseCase<GetSchemasByIdEndpointRequestDto, IEnumerable<GetSchemasByIdEndpointResponseDto>> useCase) : Endpoint<GetSchemasByIdEndpointRequestDto, IEnumerable<GetSchemasByIdEndpointResponseDto>>
-    {
-        public override void Configure()
-        {
-            Get("/api/schema/{SchemaId}");
-            AllowAnonymous();
-        }
+//namespace Signet.Api.Features.Schemas.Endpoints.GetSchemaById;
 
-        public override async Task HandleAsync(GetSchemasByIdEndpointRequestDto request, CancellationToken cancellationToken)
-        {
-            await Send.OkAsync(await useCase.ExecuteAsync(request, cancellationToken), cancellationToken);
-        }
-    }
-}
+//public sealed class GetSchemasBySchemaIdEndpoint(IUseCase<GetSchemasByIdEndpointRequestDto, IEnumerable<GetSchemasByIdEndpointResponseDto>> useCase) : Endpoint<GetSchemasByIdEndpointRequestDto, IEnumerable<GetSchemasByIdEndpointResponseDto>>
+//{
+//    public override void Configure()
+//    {
+//        Get("/api/schema/{SchemaId}");
+//        AllowAnonymous();
+//    }
+
+//    public override async Task HandleAsync(GetSchemasByIdEndpointRequestDto request, CancellationToken cancellationToken)
+//    {
+//        await Send.OkAsync(await useCase.ExecuteAsync(request, cancellationToken), cancellationToken);
+//    }
+//}

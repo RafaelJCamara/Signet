@@ -1,19 +1,18 @@
 ﻿using FastEndpoints;
-using Signet.Api.Features.Common.UseCases;
+using Signet.Api.Common.UseCases;
 
-namespace Signet.Api.Features.Schemas.Endpoints.AddSchema
+namespace Signet.Api.Features.Schemas.Endpoints.AddSchema;
+
+public sealed class AddSchemaEndpoint(IUseCaseVoid<AddSchemaInputDto> addSchemaUseCase) : Endpoint<AddSchemaInputDto>
 {
-    public sealed class AddSchemaEndpoint(IUseCaseVoid<AddSchemaInputDto> addSchemaUseCase) : Endpoint<AddSchemaInputDto>
+    public override void Configure()
     {
-        public override void Configure()
-        {
-            Post("/api/schema");
-            AllowAnonymous();
-        }
+        Post("/api/containers/{ContainerId}/schemas");
+        AllowAnonymous();
+    }
 
-        public override async Task HandleAsync(AddSchemaInputDto request, CancellationToken cancellationToken)
-        {
-            await addSchemaUseCase.ExecuteAsync(request, cancellationToken);
-        }
+    public override async Task HandleAsync(AddSchemaInputDto request, CancellationToken cancellationToken)
+    {
+        await addSchemaUseCase.ExecuteAsync(request, cancellationToken);
     }
 }

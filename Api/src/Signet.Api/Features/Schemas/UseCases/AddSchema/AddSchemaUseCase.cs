@@ -1,26 +1,18 @@
-﻿using Signet.Api.Features.Common.UseCases;
-using Signet.Api.Features.Schemas.Domain.Entities;
-using Signet.Api.Features.Schemas.Domain.Repositories;
+﻿using Signet.Api.Common.UseCases;
+using Signet.Api.Domain.Entities;
+using Signet.Api.Domain.Repositories;
 using Signet.Api.Features.Schemas.Endpoints.AddSchema;
 
-namespace Signet.Api.Features.Schemas.UseCases.AddSchema
+namespace Signet.Api.Features.Schemas.UseCases.AddSchema;
+
+public sealed class AddSchemaUseCase(IRepository<SchemaContainer> schemaRepository) : IUseCaseVoid<AddSchemaInputDto>
 {
-    public sealed class AddSchemaUseCase(ISchemaRepository schemaRepository) : IUseCaseVoid<AddSchemaInputDto>
+    public async ValueTask ExecuteAsync(AddSchemaInputDto input, CancellationToken cancellationToken = default)
     {
-        public async ValueTask ExecuteAsync(AddSchemaInputDto input, CancellationToken cancellationToken = default)
-        {
-            var newSchema = await Schema.CreateSchemaAsync(
-                input.Name,
-                input.Description,
-                input.Id,
-                input.Version,
-                input.ChangeLog,
-                input.SchemaDefinition
-            );
+        var schemaContainer = await schemaRepository.GetByIdAsync(input.ContainerId);
 
-            //TODO: check if schema with manual id exists, and only create if it doesn't
+        await schemaContainer.AddSchemaToContainerAsync(input.Version, input.ChangeLog, input.SchemaDefinition);
 
-            await schemaRepository.CreateAsync(newSchema);
-        }
+        await schemaRepository.UpdateAsync(schemaContainer);
     }
 }

@@ -1,33 +1,29 @@
-﻿using Signet.Api.Features.Common.UseCases;
-using Signet.Api.Features.Schemas.Domain.Repositories;
+﻿using Signet.Api.Common.UseCases;
+using Signet.Api.Domain.Entities;
+using Signet.Api.Domain.Repositories;
+using Signet.Api.Features.Containers.Common.Infrastructure;
 using Signet.Api.Features.Schemas.Endpoints.AddSchema;
-using Signet.Api.Features.Schemas.Endpoints.GetAllSchemas;
-using Signet.Api.Features.Schemas.Endpoints.GetSchemaById;
-using Signet.Api.Features.Schemas.Infrastructure.Persistence.Repositories;
 using Signet.Api.Features.Schemas.UseCases.AddSchema;
-using Signet.Api.Features.Schemas.UseCases.GetAllSchemas;
-using Signet.Api.Features.Schemas.UseCases.GetSchemaById;
 
-namespace Signet.Api.Features.Schemas.Extensions
+namespace Signet.Api.Features.Schemas.Extensions;
+
+public static class SchemaFeatureExtensions
 {
-    public static class SchemaFeatureExtensions
+    public static WebApplicationBuilder AddSchemaUseCases(this WebApplicationBuilder builder)
     {
-        public static WebApplicationBuilder AddSchemaUseCases(this WebApplicationBuilder builder)
-        {
-            builder.Services.AddScoped<IUseCaseVoid<AddSchemaInputDto>, AddSchemaUseCase>();
+        builder.Services.AddScoped<IUseCaseVoid<AddSchemaInputDto>, AddSchemaUseCase>();
 
-            builder.Services.AddScoped<IUseCase<GetSchemasByIdEndpointRequestDto, IEnumerable<GetSchemasByIdEndpointResponseDto>>, GetSchemasByIdUseCase>();
+        //builder.Services.AddScoped<IUseCase<GetSchemasByIdEndpointRequestDto, IEnumerable<GetSchemasByIdEndpointResponseDto>>, GetSchemasByIdUseCase>();
 
-            builder.Services.AddScoped<IUseCaseOutputOnly<IEnumerable<GetAllSchemasEndpointResponseDto>>, GetAllSchemasUseCase>();
+        //builder.Services.AddScoped<IUseCaseOutputOnly<IEnumerable<GetAllSchemasEndpointResponseDto>>, GetAllSchemasUseCase>();
 
-            return builder;
-        }
+        return builder;
+    }
 
-        public static WebApplicationBuilder AddSchemaInfrastructureExtensions(this WebApplicationBuilder builder)
-        {
-            builder.Services.AddScoped<ISchemaRepository, SchemaRepository>();
+    public static WebApplicationBuilder AddSchemaInfrastructureExtensions(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddScoped<IRepository<SchemaContainer>, SchemaContainerRepository>();
 
-            return builder;
-        }
+        return builder;
     }
 }
