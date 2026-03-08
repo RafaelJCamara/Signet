@@ -66,6 +66,7 @@ app.Run();
 
 
 //TODO: Add backward/forward/full compatibility
+//TODO: Have better enum mapping from schema compatibility
 //TODO: change REST resources to plural
 //TODO: add fluent validations
 //TODO: make connection strings and so on come from config
