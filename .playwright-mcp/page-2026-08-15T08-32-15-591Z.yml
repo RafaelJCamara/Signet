@@ -1,0 +1,54 @@
+- generic [ref=f2e2]:
+  - link "Skip to content" [ref=f2e3] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f2e4]:
+    - generic [ref=f2e5]: Concordat
+    - navigation "Main" [ref=f2e6]:
+      - link "Subjects" [ref=f2e7] [cursor=pointer]:
+        - /url: /subjects
+    - generic [ref=f2e8]:
+      - generic [ref=f2e9]: dev
+      - group "Colour theme" [ref=f2e11]:
+        - button "Light" [ref=f2e12]
+        - button "Dark" [ref=f2e13]
+        - button "System" [pressed] [ref=f2e14]
+  - alert [ref=f2e15]:
+    - heading "This registry is unclaimed" [level=2] [ref=f2e16]
+    - paragraph [ref=f2e17]: Anyone who can reach it can change anything. Create the first account to close it.
+    - link "Set up" [ref=f2e18] [cursor=pointer]:
+      - /url: /sign-in
+  - main [ref=f2e19]:
+    - generic [ref=f2e21]:
+      - generic [ref=f2e22]:
+        - generic [ref=f2e23]:
+          - heading "Subjects" [level=1] [ref=f2e24]
+          - paragraph [ref=f2e25]: Environment dev
+        - button "New subject" [ref=f2e26]
+      - table [ref=f2e29]:
+        - caption [ref=f2e30]:
+          - text: Subjects in this environment, with the version the
+          - code [ref=f2e31]: latest
+          - text: pointer resolves to.
+        - rowgroup [ref=f2e32]:
+          - row [ref=f2e33]:
+            - columnheader "Subject" [ref=f2e34]
+            - columnheader "Format" [ref=f2e35]
+            - columnheader "Owner" [ref=f2e36]
+            - columnheader "Latest" [ref=f2e37]
+            - columnheader "Registered" [ref=f2e38]
+            - columnheader "State" [ref=f2e39]
+        - rowgroup [ref=f2e40]:
+          - row [ref=f2e41]:
+            - cell "acme.orders.OrderCreated" [ref=f2e42]
+            - cell "json" [ref=f2e43]
+            - cell "quickstart" [ref=f2e44]
+            - cell "v1" [ref=f2e45]
+            - cell "yesterday" [ref=f2e46]
+            - cell [ref=f2e47]
+          - row [ref=f2e48]:
+            - cell "acme.test.Portability" [ref=f2e49]
+            - cell "json" [ref=f2e50]
+            - cell "quickstart" [ref=f2e51]
+            - cell "v1" [ref=f2e52]
+            - cell "yesterday" [ref=f2e53]
+            - cell [ref=f2e54]

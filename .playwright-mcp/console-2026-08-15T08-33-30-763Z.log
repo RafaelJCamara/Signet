@@ -1,0 +1,2 @@
+[      57ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:4300/v1/auth/resume:0
+[     104ms] [LOG] Angular is running in development mode. @ http://localhost:4300/@fs/C:/Users/rafae/Documents/Projects/Signet/web/.angular/cache/22.1.4/concordat-web/vite/deps/core-DnJhzkQh.js?v=c2a0e3d2:12235

@@ -1,0 +1,20 @@
+- generic [ref=f3e2]:
+  - link "Skip to content" [ref=f3e3] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f3e4]:
+    - generic [ref=f3e5]: Concordat
+    - navigation "Main" [ref=f3e6]:
+      - link "Subjects" [ref=f3e7] [cursor=pointer]:
+        - /url: /subjects
+    - generic [ref=f3e8]:
+      - generic [ref=f3e9]: dev
+      - group "Colour theme" [ref=f3e11]:
+        - button "Light" [ref=f3e12]
+        - button "Dark" [ref=f3e13]
+        - button "System" [pressed] [ref=f3e14]
+  - alert [ref=f3e15]:
+    - heading "This registry is unclaimed" [level=2] [ref=f3e16]
+    - paragraph [ref=f3e17]: Anyone who can reach it can change anything. Create the first account to close it.
+    - link "Set up" [ref=f3e18] [cursor=pointer]:
+      - /url: /sign-in
+  - main

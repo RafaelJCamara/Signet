@@ -1,0 +1,17 @@
+- generic [ref=f4e2]:
+  - link "Skip to content" [ref=f4e3] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f4e4]:
+    - generic [ref=f4e5]: Concordat
+    - navigation "Main" [ref=f4e6]:
+      - link "Subjects" [ref=f4e7] [cursor=pointer]:
+        - /url: /subjects
+    - generic [ref=f4e8]:
+      - generic [ref=f4e9]: dev
+      - generic [ref=f4e10]: owner@concordat.test
+      - button "Sign out" [ref=f4e11]
+      - group "Colour theme" [ref=f4e13]:
+        - button "Light" [ref=f4e14]
+        - button "Dark" [ref=f4e15]
+        - button "System" [pressed] [ref=f4e16]
+  - main

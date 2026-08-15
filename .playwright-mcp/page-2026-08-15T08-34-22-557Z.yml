@@ -1,0 +1,20 @@
+- generic [ref=f5e2]:
+  - link "Skip to content" [ref=f5e3] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f5e4]:
+    - generic [ref=f5e5]: Concordat
+    - navigation "Main" [ref=f5e6]:
+      - link "Subjects" [ref=f5e7] [cursor=pointer]:
+        - /url: /subjects
+    - generic [ref=f5e8]:
+      - generic [ref=f5e9]: dev
+      - link "Sign in" [ref=f5e10] [cursor=pointer]:
+        - /url: /sign-in
+      - group "Colour theme" [ref=f5e12]:
+        - button "Light" [ref=f5e13]
+        - button "Dark" [ref=f5e14]
+        - button "System" [pressed] [ref=f5e15]
+  - main [ref=f5e16]:
+    - generic [ref=f5e20]:
+      - heading "Subjects" [level=1] [ref=f5e21]
+      - paragraph [ref=f5e22]: Environment
